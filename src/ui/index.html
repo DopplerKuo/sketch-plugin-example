@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
+<style>
+  html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: #333842;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Quicksand', PingFangTC-Ultralight, xingothic-tc, sans-serif;
+  }
+
+  div {
+    display: inline-block;
+  }
+
+  h1 {
+    font-size: 20px;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .btn {
+    background-color: #584EAF;
+    color: #fff;
+    border-radius: 3px;
+    line-height: 30px;
+    text-align: center;
+    width: 120px;
+    font-size: 13px;
+    margin-top: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .btn:hover {
+    opacity: .9;
+  }
+</style>
+<body>
+  <h1>目前已選擇</h1>
+  <div>
+    <span id="count">0</span>
+    <span>
+      個圖層或群組
+    </span>
+  </div>
+  <div id="btn" class="btn">一鍵輸出！</div>
+</body>
+<script>
+  window.writeSelectionCount = function(count) {
+    const countNode = document.querySelector('#count');
+    countNode.innerText = count;
+  }
+
+  document.querySelector('#btn').addEventListener('click', onBtnClick);
+  function onBtnClick() {
+    window.postMessage('exportLayers');
+  }
+</script>
+</html>
